@@ -1,0 +1,56 @@
+
+% To be included
+\chapter*{导言}	% 文档类会自动将之加入目录并设置天眉
+\section*{概观}
+本文旨在科普意义上回答三个问题:
+\begin{itemize}
+    \item 我们为什么需要平展上同调?
+    \item 平展上同调能做什么?
+    \item 对于平展的未来有什么展望?
+\end{itemize}\
+\begin{flushright}\begin{minipage}{0.3 \textwidth}
+	\begin{tabular}{c}
+		{\kaishu 环} \\
+		是一个鸽子精
+	\end{tabular}
+\end{minipage}\end{flushright}
+\vspace{1em}
+\section{问题一}
+在代数拓扑中, 我们已经学到奇异同调与奇异上同调等相关不变量, 以及其所具有的文明性质, e.g.:
+\begin{theorem}[Poincar\'e对偶]
+设$X$是紧可定向$n$维流形, $G$是Abel群, 有同构
+\begin{equation*}
+    (-)\frown [X]: H^k(X;G)\simeq H_{n-k}(X;G).
+\end{equation*}
+\end{theorem}
+\begin{theorem}[K\"unneth公式]设$X$,$Y$是拓扑空间, 考虑域系数上的奇异上同调, 若我们对$H^i(X)$都有有限生成, 我们有
+\begin{equation*}
+    H^n(X\times Y) \simeq \bigoplus_{p+q=n}H^p(X)\otimes H^q(Y).
+\end{equation*}
+    
+\end{theorem}
+\begin{theorem}[奇异常值比较] 设$X$是局部可缩空间, 对任何交换环$G$有典范同构
+\begin{equation*}
+    H^i_{\text{sing}}(X,G) \cong H^i(X,\underline{G}).
+\end{equation*}
+    
+\end{theorem}
+一个很自然的问题是, 我们能不能在代数几何中得到这样的东西呢? 自然而然我们可能会考虑已有的Zariski拓扑,但Zariski拓扑太过松, 有以下问题:
+\begin{theorem}
+    对不可约空间$X$,常值层$A$,若$i \geq 0$则$H^i(X,A)=0$.
+\end{theorem}
+于是我们为了定义一个类似奇异上同调这样含有大量信息, 具有良好性质的上同调理论(实际上可以归结为Weil上同调), 于是平展上同调应运而生.\\
+另一问题在于, 我们如何定义一个具有代数几何意味的上同调理论, 同时不会出现以上的不良情况, 我们需要相比Zariski拓扑添入更多的开集
+\section{问题二}
+\section{问题三}
+\section{编者致谢}
+在编撰整理阶段承蒙平展讨论班各位的理解与襄助,一个人显然是无法完成这等任务的,在编撰过程中考虑到电子版阅读需求,尽可能使用一些网络资源如\href{https://stacks.math.columbia.edu/}{The Stacks Project}, \href{https://mathoverflow.net/}{MathOverflow},\href{https://math.stackexchange.com/}{Mathematics Stack Exchange},\href{https://ncatlab.org/nlab/show/HomePage}{nLab}等,方便读者进行检索.\\
+此外,采用了北京大学\href{https://www.wwli.asia/index.php/zh/}{李文威}教授的LaTeX模板,交换图表的编辑使用了\href{https://q.uiver.app/}{quiver},感谢以上作者在技术以及知识上的无私分享!
+
+\begin{flushright}\begin{minipage}{0.3 \textwidth}
+	\begin{tabular}{c}
+		{\kaishu 遗忘的左伴随} \\
+		2024年4月于坞城
+	\end{tabular}
+\end{minipage}\end{flushright}
+\vspace{1em}

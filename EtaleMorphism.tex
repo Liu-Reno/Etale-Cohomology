@@ -1,0 +1,383 @@
+\chapter{平展态射}
+我们先从一些简单的交换代数开始讲起,而后把它们推广到概形之间的态射上.
+\begin{convention}
+    本讲中,用$X,Y$等符号表示概形,使用$A,B$等符号表示环,$M$表示模.
+\end{convention}
+\begin{flushright}\begin{minipage}{0.3 \textwidth}
+	\begin{tabular}{c}
+		{主讲人: Moqing CHEN} \\
+		应该在法国
+	\end{tabular}
+\end{minipage}\end{flushright}
+\section{有限态射}
+
+\begin{definition-proposition}
+    假设$k$是一个域,$A$是一个有限生成的$k$-代数.以下条件等价:
+    \begin{enumerate}
+        \item $A$是有限生成的$k$-代数;
+        \item $A$是Artin的;
+        \item $\text{Spec} A$是离散的;
+        \item $A$有有限多个极大理想.
+    \end{enumerate}
+\end{definition-proposition}
+\begin{proof}
+唯一不平凡的几个点是\\
+2. $\Rightarrow$ 1. 不妨设$A$是局部环,且有极大理想$\mathfrak{m}$,由于$A$是Artin环,$\mathfrak{m}$是幂零的,即存在$n\in \Z_{\geq 0}$使得$\mathfrak{m}^n = 0$.从而$\dim_{A/\mathfrak{m}}\mathfrak{m}^i/\mathfrak{m}^{i+1} < +\infty$对于任意$i$成立,从而$\dim_k A/\mathfrak{m}<+\infty$.从而$\dim_k \mathfrak{m}^i/\mathfrak{m}^{i+1}<+\infty$\\
+4. $\Rightarrow$ 2. ,我们只需要证明$\krulldim(A) = 0$.回忆若干Jacobson环的知识,得到$A$是Jacobson环,从而对于任意的素理想$\mathfrak{p}$, $\mathfrak{p} = \bigcap_{i=1}^n \mathfrak{m}_i$.从而存在$i$使得$\mathfrak{p}\supset \mathfrak{m}_i$,从而$A$为Noether,而后自然Artin.
+
+\end{proof}
+\begin{definition}
+考虑概形间的映射$f :X \to Y$(本节$X,Y$默认为概型,$A,B$默认环),我们说$f$是有限(finite)若$f$是仿射的(affine)(即,任意$Y$中的仿射开子集$V$,$f^{-1}(V)$也是仿射的),且$\Gamma(f^{-1}(V),\mathcal{O}_X)$是一个有限$\Gamma(V,\mathcal{O}_Y)$-代数.
+\end{definition}
+\begin{proposition}\label{Pro:Finiteness}
+可以轻松得到以下结果:
+    \begin{enumerate}
+        \item 闭浸入(closed immersion)是有限的;
+        \item 有限性对于两个态射的复合稳定;
+        \item 有限态射在基变换(base change)下稳定;
+        
+    \end{enumerate}
+\end{proposition}
+\begin{remark}
+    \textbf{主讲人曰:不打序号了,让打讲义的打!}
+\end{remark}
+\begin{proposition}
+        有限态射是紧合的(proper).
+\end{proposition}
+\begin{proof}
+    有限态射易见是有限型(of finite type),且仿射态射是分离的(separated),故只需证明泛闭(universally closed).由命题\ref{Pro:Finiteness},有限态射在基变换下稳定,故只需证明有限态射是闭映射,进一步再由命题\ref{Pro:Finiteness}的前两个结果可以约化为证明有限态射的像是闭的.而最后这件事可以约化到仿射情形证明.
+    \\
+    若$\varphi :A \to B$为有限环同态,则它可以分解为$A \to A/\ker \varphi \hookrightarrow B$其中后半部分是有限的,从而得到$\Spec B \to \Spec A/\ker \varphi $是满射,且\begin{tikzcd}[column sep=small]
+            \Spec A/\ker\varphi \ar[r,closed] & \Spec A
+        \end{tikzcd}为闭浸入,故$\Spec B$在$\Spec A$中的像是闭的.
+\end{proof}
+\section{平坦性}
+回忆到若$A$是一个环,$M$是一个$A$-模.
+\begin{definition}[平坦模与环]
+    若$-\otimes_A M$是正合的,则$M$是平坦的.对环同态$A \to B$,$B$是平坦的当且仅当$ -\otimes_A B$是正合的.
+\end{definition}
+我们可以得到一些不平凡的结果.
+\begin{proposition}
+    一个$A$-模$M$是有限展示的,则$M$是平坦的当且仅当$M$是投射的.
+\end{proposition}
+\begin{proof}
+    见\href{https://cn.overleaf.com/read/fhcmrhkdqfxq#336bc5}{Mathstackexchange}.
+\end{proof}
+\begin{definition}[概形的平坦性]
+    令$f :X\to Y$,我们称$f$是平坦的当且仅当对于任意的$x \in X$,$\OO_{Y,f(x)} \to \OO_{X,x}$是平坦的.
+\end{definition}
+\begin{definition-proposition}[代数的忠实平坦性]\label{Def:FaithfulFlat}
+    一个平坦$A$-代数$B$是忠实平坦的(faithfully flat),当且仅当$B$满足以下的等价条件之一:
+    \begin{enumerate}
+        \item $B\otimes_A M = 0$,则$M = 0$;
+        \item $A$-模的列$M' \to M \to M''$是正合的当且仅当$M' \otimes_A B \to M\otimes_A B \to M'' \otimes B$是正合的;
+        \item $f : A\to B$诱导一个满射$\text{Spec }B \to \text{Spec }A$;
+        \item 对于任意的$\mathfrak{m}\subset A$为极大理想,我们有$\mathfrak{m} B \neq B$.
+    \end{enumerate}
+    若$B$为忠实平坦$A$-代数,则称$f: A \to B$是忠实平坦的.
+\end{definition-proposition}
+\begin{proof}
+   1. $\Rightarrow$ 2., 注意到$B$是平坦的,函子$-\otimes_AB$保核与像.若$B \otimes_A M' \to B\otimes_A M \to B\otimes_AM''$是正合的,则由1.知合成$M' \to M \to M''$为$0$,即$M' \to M \to M''$为复形.考虑态射
+   \begin{equation*}
+       \Image[M' \to M] \to \Ker [M \to M'']
+   \end{equation*}
+   在与$B$做张量积后为同构,从而由1.知这个态射为同构,从而$M' \to M \to M''$正合.\\
+   2. $\Rightarrow$ 3., 对于任意的$\mathfrak{p} \in \Spec A$,记在$\mathfrak{p}$处的函数域为$\kappa(\mathfrak{p})$.因$\kappa(\mathfrak{p})\neq 0$, $A$-模链$0 \to \kappa(\mathfrak{p}) \to 0$不是正合的,从而$0 \to \kappa(\mathfrak{p}) \otimes_A B \to 0$也并非正合,从而$\kappa(\mathfrak{p}) \otimes_A B \neq 0$,进而$\Spec B \to \Spec A$为满射.\\
+   3. $\Rightarrow$ 4., 取$\mathfrak{m} \in \MaxSpec{A}$,显然有$\kappa(\mathfrak{p}) \otimes_A B \neq 0$从而$A/\mathfrak{m}\neq 0$从而$\mathfrak{m} B \neq B$.\\
+   4. $\Rightarrow$ 1., 注意到对于任意的非空$A$-模$M$以及一个非零元$m\in M$,我们有如下正合列
+   \begin{equation*} 
+       0 \to A/\Ann(m) \to M\text{以及} A/\mathfrak{m} \to A/\Ann(m) \to 0
+   \end{equation*}
+   其中$\mathfrak{m}$是$A$的一个包含$\Ann(m)$的极大理想.从而$B \otimes_A M = 0$,我们因此得知$B \otimes_A A/\Ann(m) =0$,与4.矛盾.
+\end{proof}
+\begin{remark}[4.的等价条件]\label{Rk:LocalandFaithfulFalt}
+    若$A \to B$为局部态射(当然$A$,$B$是局部环),若满足4.则$A \to B$自动是忠实平坦的.
+\end{remark}
+现在我们把这个定义推广到概形上:
+\begin{definition}[概形的平坦性与忠实平坦性]\label{Def:SchemeFaithfulFlat}
+    若对于任意的$x\in X$,概形间的态射$f: X \to Y$满足$\OO_{Y,f(x)} \to \OO_{X,x}$是平坦的,我们就说$f$是平坦的.若$f$同时为满射,则称$f$为忠实平坦的.
+\end{definition}
+\begin{remark}
+    定义\ref{Def:SchemeFaithfulFlat}与定义\ref{Def:FaithfulFlat}是相容的,为此,我们只需要观察到环同态$f : A \to B$在定义\ref{Def:FaithfulFlat}下是忠实平坦的当且仅当其诱导的概形间的态射在定义\ref{Def:SchemeFaithfulFlat}下是忠实平坦的.
+\end{remark}
+\begin{proposition}
+    若$f : X \to Y$是Nother概形之间的有限平坦态射,则$f$(作为拓扑空间的)映射是开的.
+\end{proposition}
+\begin{proof}
+    只需要证明$f(X)\subset Y$是开的(不然考虑$U \hookrightarrow X \to Y$即可).根据注记\ref{Rk:LocalandFaithfulFalt},我们得知$\Spec \OO_{Y,f(x)} \to \Spec \OO_{X,x}$是满射,因此$f(X)$\href{https://stacks.math.columbia.edu/tag/0061}{在一般化下是稳定的(stable under generalization)}.因$f$为有限展示,\href{https://stacks.math.columbia.edu/tag/00FE}{Chevalley 定理}推出$f(X)$是\href{https://stacks.math.columbia.edu/tag/005G}{可构造的(constructible)},因为\href{https://stacks.math.columbia.edu/tag/0542}{Noether空间中任意在一般化下稳定的可构造集合都是开的},从而$f(X)$是开的.
+\end{proof}
+\begin{remark}
+    此处关于Noether条件产生争论(有人提出若假设则后文构造无法继续).
+\end{remark}
+\begin{corollary}
+    $f : X\to Y$是有限平坦态射,则$f$是开的,若$Y$还是连通的,则$f$是满射.
+\end{corollary}
+\section{微分模与非分歧态射}
+\begin{definition}[导子]
+    设$A$为环,$B$为一个$A$-代数,$M$为一个$B$-模.称映射$d: B \to M$为一个$A$-导子(derivations),若其满足如下条件:
+    \begin{enumerate}
+        \item $\dd(b_1+b_2) = \dd(b_1)+\dd(b_2),\forall b_1,b_2\in B.$
+        \item (Leibniz律)$\dd(b_1b_2) = b_1\dd(b_2)+b_2\dd(b_1) , \forall b_1,b_2 \in B$.
+        \item $\dd a = 0,\forall a\in A$
+    \end{enumerate}
+    我们把全体$A$-导子的集合记为$\Der_A(B,M)$,对于$\dd \in \Der_A(B,M)$,对$a\in A,b\in B$有$\dd(ab) = b\dd(a)+a\dd(b)=a\dd(b)$从而$\dd$为$A$-模同态
+\end{definition}
+\begin{definition}[微分模]
+    $\Der_A(B,-)$是可表的,即存在一个$B$-模$\Omega_{B/A}$使得$\Hom(\Omega_{B/A},M ) = \Der_A(B,M)$. $\Omega_{B/A}$为$B$在$A$上的微分模(Module of relative differentials),其有以下两种等价定义:
+    \begin{itemize}
+        \item (更直观)考虑由形式符号集合$\{\tilde{\dd}b:b\in B\}$作为基生成的自由$B$-模$\tilde{\Omega}_{B/A}$,再定义$\Omega_{B/A} = \tilde{\Omega}_{B/A}/F$为商模,其中$F$为以下三类元素生成的$B$-子模:
+        \begin{enumerate}
+            \item $\tilde{\dd}(b_1+b_2)-\tilde{\dd}b_1-\tilde{\dd}b_2,\forall b_1,b_2\in B$.
+            \item $\tilde{\dd}(b_1b_2) - b_1\tilde{\dd}(b_2) - b_2 \tilde{\dd}(b_1),\forall b_1,b_2\in B$.
+            \item $\tilde{\dd}a,\forall a\in A$.
+        \end{enumerate}
+        记$\tilde{\dd}b$在$\Omega_{B/A}$中的代表元为$\dd b$.
+        \item (更方便使用)$\varphi : B\otimes_A B \to B$,$b_1\otimes b_2 \to b_1b_2$,$I := \ker \varphi$,$\Omega_{B/A}:= I/I^2$在$B\otimes_AB/I=B$.
+    \end{itemize}
+\end{definition}
+\begin{remark}\label{Rk:DifferentialIdealInFiniteAlg}
+    若$B$为有限生成的$A$-代数且有生成元$x_1,\cdots,x_n$,则$I = \Ker [B\otimes_A B \to B]$是一个有限生成的理想,事实上,$I = (x_i\otimes 1- 1\otimes x_i)_{1\leq i \leq n}$.
+\end{remark}
+\begin{proposition}\label{Pro:LocalizationsPropertyOfDifferentialModule}
+    设$A$是一个环,$B,A'$为$A$-代数,$B' := A' \otimes_A B$,则
+    \begin{enumerate}
+        \item $\Omega_{B'/A'} = \Omega_{B/A}  \otimes_B B' = \Omega_{B/A}\otimes_A A'$
+        \item $S \subset B$为一个乘性子集,则$\Omega_{S^{-1}B/A} = S^{-1}\Omega_{B/A}$,满足以下泛性质
+        \begin{align*}
+            \Der_A(B,M) &\xrightarrow{\sim} \Der_A(S^{-1}B,M)\\
+            \dd &\mapsto \left(\frac{b}{s} \mapsto \frac{s\dd b-b\dd s}{s^2}\right)
+        \end{align*}
+            
+    \end{enumerate}
+\end{proposition}
+\begin{proposition}[基本正合列]
+    $A \to B \to C$为环同态,则
+    \begin{enumerate}
+        \item 一列$C$-模
+        \begin{equation*}
+           C \otimes_B \Omega_{B/A} \to \Omega_{C/A} \to \Omega_{C/B} \to 0 
+        \end{equation*}
+        是正合的;
+        \item 此外,若$C= B/I$(此时$\Omega_{C/B} = 0$),我们有$I/I^2 \xrightarrow{d} C \otimes_B \Omega_{B/A} \to \Omega_{C/A} \to 0$正合.其中第一个映射为$[b]\mapsto 1\otimes \dd b$.
+    \end{enumerate}
+\end{proposition}
+依赖这些正合列我们可以进行一些运算,当然我们不依赖这些短正合列也可以进行一些运算.
+\begin{proposition}
+    $B = A[x_1,\cdots,x_n]$,则$\Omega_{B/A} = \bigoplus_{i=1}^n B dx_i$
+\end{proposition}
+\begin{proposition}\label{Pro:DifferentialModuleOfFiniteAlg}
+    若$B$是一个有限型(或有限展示的)$A$-代数,则$\Omega_{B/A}$是有限(或有限展示的)$B$-模.此外若$B = \frac{A[x_1,\cdots,x_n]}{(P_1,\cdots,P_m)}$,则此时
+    \begin{equation*}
+        \Omega_{B/A} = \frac{\bigoplus_{i=1}^nB \dd X_i}{\left(\sum_{j=1}^n \frac{\partial f_i}{\partial X_j}\dd X_j\right)_{i=1}^m}
+    \end{equation*}.
+\end{proposition}
+\begin{corollary}\label{Cor:DifferentialModuleOfFiniteSeparable}
+    $L/K$为一有限可分扩张,则$\Omega_{L/K}  =0$.
+\end{corollary}
+\begin{proposition}\label{Pro:Trace}
+    令$K$为一个域且$\overline{K}$为其代数闭包.令$A$为一个有限$K$-代数.记$\Tr$为$A$上定义为$(x,y) \mapsto \Tr(xy)$的$K$-双线性形式.则以下条件等价:
+    \begin{enumerate}
+        \item $A$是$K$的有限可分扩张的乘积.
+        \item $A \otimes \overline{K} \simeq \overline{K}^{\dim_K A}$.
+        \item 存在$K$的有限扩张$L$使得$A \otimes L \simeq L^{\dim_K A}$.
+        \item $K$-双线性形式$\Tr$在$A$中是非退化的.
+        \item $\Omega_{A/K} = 0$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    参见\href{https://stacks.math.columbia.edu/tag/00UV}{Stacks Projects}.
+\end{proof}
+现在我们把微分模推广到一般的概形上面.
+\begin{definition}[微分层]
+    令$f : X \to Y$为概形间的态射,$A : X \to X\times_Y X$,令$U \subset X \times_Y X$为一个包含$\Delta(X)$的开子集,其中$\Delta : X \to U$是闭浸入.令$\mathcal{I}$为其理想层,我们定义$X$在$Y$上的微分层(sheaf of relative differentials)为$\Omega_{X/Y}$为$\Delta^{-1} (\mathcal{I}/\mathcal{I}^2)$.
+\end{definition}
+\begin{definition-proposition}
+    令$f : X \to Y$为有限型间的概形态射,$x \in X$且$y = f(x)$.以下命题是等价的:
+    \begin{enumerate}
+        \item $\mathfrak{m}_y\OO_{X,x}=\mathfrak{m}_x$且$\kappa(x)/\kappa(y)$是有限可分的.
+        \item $(\Omega_{X/Y})_x =0 $.
+        \item 对角态射$\Delta : X \to X \times_Y X$在$x$的邻域上是一个开浸入.
+    \end{enumerate}
+    此时,我们称$f$在点$x$处是非分歧的(unramified).若$f : X \to Y$中每一点$x$都是非分歧的,则称$f$是非分歧态射.
+\end{definition-proposition}
+\begin{proof}
+    1. $\Rightarrow$ 2., 条件1. 可以推知$\OO_{X,x}\otimes_{\OO_{Y,y}} \kappa(y) = \kappa(x)$,从而
+    \begin{equation}
+        (\Omega_{X/Y})_x \otimes_{\OO_{X,x}} \kappa(x) = (\Omega_{X/Y})_x\otimes_{\OO_{Y,y}} \kappa(y) \xlongequal{\text{命题}\ref{Pro:LocalizationsPropertyOfDifferentialModule}}\Omega_{\kappa(x)/\kappa(y)} \xlongequal{\text{推论}\ref{Cor:DifferentialModuleOfFiniteSeparable}}0.
+    \end{equation}
+    根据命题\ref{Pro:DifferentialModuleOfFiniteAlg}可知$(\Omega_{X/Y})_x$是一个有限$\OO_{X,x}$-模,因此根据\href{https://stacks.math.columbia.edu/tag/00DV}{Nakayama引理}可知$(\Omega_{X/Y})_x=0$.\\
+    2. $\Rightarrow$ 3., $U \subset X \times_Y X$为一个包含$\Delta(X)$的开集使得$\Delta : X\to U$为一个由理想层$\mathcal{I}$所定义的闭浸入.根据定义我们得知
+    \begin{equation*}
+        (\Omega_{X/Y})_x = (\Delta^{-1}\mathcal{I}/\mathcal{I}^2)_x = (\mathcal{I/I}^2)_y = \mathcal{I}_y/\mathcal{I^2}_{y} = \mathcal{I}_y \otimes_{\OO_{Y,y}} \OO_{Y,y}/\mathfrak{m}_y.
+    \end{equation*}
+    再次使用注记\ref{Rk:DifferentialIdealInFiniteAlg}以及Nakayama引理,我们得到$\mathcal{I}_y = 0$.但是由于$\mathcal{I}$为\href{https://stacks.math.columbia.edu/tag/01BE}{拟凝聚}的,因此它在$y$的一个开邻域$U$上消失.从而$\Delta$在这个邻域的原像上是一个开浸入.\\
+    3. $\Rightarrow$ 1., 由于取纤维并不影响函数域,且3.在基变换下是稳定的,从而我们可以取基变换$\Spec k(y) \to Y$,问题也就简化为$Y = \Spec K,X = \Spec A$的情况,其中$K$是一个域且$A$是一个$k$-代数使得$\Delta :X \to X \times_Y X$自身是一个开浸入.\\
+    首先假设$K$是一个代数闭域.则对于任意的闭点$t : \Spec K \to X$,我们有Cartensius图表
+    \[\begin{tikzcd}
+	{\Spec K} & {\Spec K \times_{\Spec K} X} \\
+	X & {X \times_{\Spec K} X}
+	\arrow["{\Gamma_t=(1,t)}", from=1-1, to=1-2]
+	\arrow["t"', from=1-1, to=2-1]
+	\arrow["{(t,1)}", from=1-2, to=2-2]
+	\arrow["\Delta"', from=2-1, to=2-2]
+\end{tikzcd}\]
+    因$\Delta$是一个开浸入,从而$\Gamma_t$也是开浸入.注意到在恒等态射$\Spec K \times_{\Spec K} X= X$下, $\Gamma_t$恰好为$t$.因此$X$中任意闭点$t$都是孤立点.并且在其上的截面恰为$K$.由孤立性可以推出$A$是Artin的,从而同构于若干闭点的乘积,即$K$的有限乘积.\\
+    现在我们去掉$K$为代数闭域的假设,令$\overline{K}$为$K$的代数闭包,通过前文的讨论我们可以得知$A \otimes_K \overline{K}$同构于$\overline{K}$的有限乘积,因此根据命题\ref{Pro:Trace}可以得知$A$同构于$K$的有限乘积.
+\end{proof}
+接下来列出一些比较常用的基本的性质.
+\begin{proposition}
+    \begin{enumerate}
+        \item 闭浸入是非分歧的.
+        \item 基变换保持非分歧性.
+        \item 态射复合保持非分歧性.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    证明以及更多性质详见\href{https://stacks.math.columbia.edu/tag/00UV}{Stacks Projects}
+\end{proof}
+\section{光滑态射}
+与前文一致的,我们先定义出环上的光滑同态,而后推广至光滑态射的情形.
+\begin{definition}[光滑同态]
+    设 $B\to A$ 是环同态, $\mathfrak{q}$ 是 $A$ 的素理想,
+    $\mathfrak{p}=\mathfrak{q}\cap R$. 对 $d\in\N$, 
+    称 $B\to A$ 在 $\mathfrak{q}$ 处 $d$ 维光滑, 
+    指它在 $\mathfrak{q}$ 处有限表现同态、
+    $d$ 维平坦同态 (即存在 $a\notin\mathfrak{q}$ 
+    使 $B\to A_a$ 为有限表现、平坦、纤维 
+    $A\otimes_R\kappa(\mathfrak{p})$ 的Krull维数是 $d$), 
+    且微分模 $\Omega_{A/R}$ 在 $\mathfrak{q}$ 处局部化为秩 $d$ 自由. 
+    称其在 $\mathfrak{q}$ 处光滑, 
+    指存在 $d\in\N$ 使其在 $\mathfrak{q}$ 处 $d$ 维光滑. 
+    称 $B\to A$ 为($d$ 维)光滑同态, 指对 $A$ 
+    的每个素理想 $\mathfrak{q}$, 它在 $\mathfrak{q}$ 处 
+    ($d$ 维)光滑. 此时也称 $A$ 为 ($d$ 维)光滑 $R$-代数.
+\end{definition}
+\begin{example}[标准光滑代数]
+    令$A$为环,给定整数$n \geq m \geq 0$,以及多项式$f_1,\cdots,f_m \in A[x_1,\cdots,x_n]$.若多项式
+    \begin{equation*}
+        g = \Det\left( \begin{matrix}
+	\partial f_1/\partial x_1&		\partial f_2/\partial x_1&		\cdots&		\partial f_m/\partial x_1\\
+	\partial f_1/\partial x_2&		\partial f_2/\partial x_2&		\cdots&		\partial f_m/\partial x_2\\
+	\cdots&		\cdots&		\cdots&		\cdots\\
+	\partial f_1/\partial x_m&		\partial f_2/\partial x_m&		\cdots&		\partial f_m/\partial x_m\\
+\end{matrix} \right) 
+    \end{equation*}
+    在环$S = A[x_1,\cdots,x_n]/(f_1,\cdots,f_m)$中可逆,则称$S$是$A$上的一个标准光滑代数.
+\end{example}
+而后来看一些基本的性质
+\begin{proposition}
+    \begin{enumerate}
+        \item \href{https://stacks.math.columbia.edu/tag/00TD}{复合保持光滑性}
+        \item \href{https://stacks.math.columbia.edu/tag/00T4}{基变换保持光滑性}
+    \end{enumerate}
+\end{proposition}
+而后推广至一般的概形上:
+\begin{definition}[光滑态射]
+    考虑概形态射$f : X \to Y$,若对于$x\in X$,存在一个仿射开集$x\in U \simeq \Spec A \subset X$.以及$Y$中的一个仿射开集$\Spec B = V \subset Y$满足$f(U) \subset V$使得诱导环同态$B \to A$是光滑的,则称$f$在$x\in X$处是光滑的.\\
+    若存在一个标准光滑环同态$A \to A[x_1,\cdots,x_n]/(f_1,\cdots,f_m)$,使得$X \to Y$同构于$\Spec A[x_1,\cdots,x_n]/(f_1,\cdots,f_m) \to \Spec A$,则称$f$是标准光滑态射.
+\end{definition}
+不难发现光滑态射与光滑同态的定义是相容的.
+也可以很显然的得到一些性质:
+\begin{proposition}
+    \begin{enumerate}
+        \item 开浸入是光滑的.
+        \item 态射复合保持光滑性.
+        \item 基变换保持光滑性
+    \end{enumerate}
+\end{proposition}
+
+\section{平展态射}
+最后,来解释一下何谓平展态射,当然,我们需要先说明什么事平展同态:
+\begin{definition}[平展同态]
+    对于环同态$f : A \to B$,若其有限展示,平坦且微分模$\Omega_{A/B} = 0$.此时也称$A$为平展$R$-代数.
+\end{definition}
+\begin{definition}[平展态射]
+    概形间的态射$f : X \to Y$被称为是平展(\'etale)的若$f$满足以下等价条件:
+    \begin{enumerate}
+        \item (常见) $f$平坦(平),非分歧(展).
+        \item $f$光滑,非分歧.
+        \item 对于任意的$x\in X$,存在仿射开集$x\in U \simeq \Spec A$以及$V \simeq \Spec B$使得$f(U) \subset V$,则诱导的环同态$B\to A$是平展同态.
+    \end{enumerate}
+\end{definition}
+不难发现定义是相容的.\\
+可以得到一些性质
+\begin{proposition}
+    \begin{enumerate}
+        \item 闭浸入是平展的.
+        \item 态射复合保持平展性.
+        \item 基变换保持平展性.
+    \end{enumerate}
+\end{proposition}
+\begin{example}\label{Ex:StandardEtaleMorphism}
+    令$A$为环且$P$为$A[T]$上的首一多项式.则$B = A[T]/(P)$显然是平坦的.对于$b \in B$,我们得到
+    \begin{equation*}
+        \Omega_{B[b^{-1}]/A}=\Omega_{B/A}[b^{-1}] \xlongequal{\text{命题}\ref{Pro:DifferentialModuleOfFiniteAlg}} A[T]/(P,P')[b^{-1}] = B[b^{-1}]/(P').
+    \end{equation*}
+    从而$B[b^{-1}]/A$是非分歧的(因此是平展的)当且仅当$P'\in (B[b^{-1}])^\times$.我们称这样的平展态射是标准的.
+\end{example}
+\begin{proposition}
+    令$f : X \to S,g : Y \to X$,则若$fg$是平展的且$f$是非分歧则$g$是平展的.
+\end{proposition}
+\begin{proof}
+    令$g = p_2 \Gamma_g$,其中
+    \[\begin{tikzcd}
+	Y & {Y\times_SX} \\
+	X & {X\times_SX}
+	\arrow["{\Gamma_g = (1,g)}", from=1-1, to=1-2]
+	\arrow["g"', from=1-1, to=2-1]
+	\arrow["{(g,1)}", from=1-2, to=2-2]
+	\arrow["\Delta"', from=2-1, to=2-2]
+\end{tikzcd}
+\text{以及}
+\begin{tikzcd}
+	{Y\times_SX} & X \\
+	Y & S
+	\arrow["{p_2}", from=1-1, to=1-2]
+	\arrow["{p_1}"', from=1-1, to=2-1]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["fg"', from=2-1, to=2-2]
+\end{tikzcd}\]
+不难导出$p_2$和$\Gamma_g$的平展性
+\end{proof}
+\begin{corollary}
+    设$Y$是连通的且$f : X \to Y$是平展且分离的概形态射,则$f$的任意截面(拓扑上的截面)$s$都同构于$X$的一个连通分支.
+\end{corollary}
+\begin{proof}
+    我们有Cartensius图表
+    \[\begin{tikzcd}
+	Y & {Y\times_YX} \\
+	X & {X\times_YX}
+	\arrow["{(1,s)}", from=1-1, to=1-2]
+	\arrow["s"', from=1-1, to=2-1]
+	\arrow["{(s,1)}", from=1-2, to=2-2]
+	\arrow["\Delta", from=2-1, to=2-2]
+\end{tikzcd}\]
+可以得知$\Gamma_s :Y \to Y\times_Y X = X$是既开又闭的浸入,从而为一个到$X$的开连通分支上的满同构
+\end{proof}
+\begin{remark}\label{Rk:Subschemeandsection}
+    存在一个截面集合与$Y$中$f$诱导同构的开闭子概形之间的一一对应.特别地,一个截面在一点处的值已知时它就是已知的.
+\end{remark}
+\begin{corollary}
+    令$f,g : X\to Y$为$S$-态射其中$X$是连通的且$Y$是平展且在$S$上分离的.若存在$x \in X$使得$f(x) = g(x) = y$且由$f$和$g$诱导的映射$\kappa(y) \to \kappa(x)$相同,则$f=g$.
+\end{corollary}
+\begin{proof}
+    $f$和$g$的图均为$p_1 : X \otimes_S Y\to X$的截面,它在$S$上作为基变换$Y\to S$是平展且分离的.从而$x$在$\Gamma_f$和$\Gamma_g$下的像均为$\Spec k(x) \xrightarrow{(x,y)}X \otimes_S Y$的像,根据注记\ref{Rk:Subschemeandsection}可知$f = g$.
+\end{proof}
+\begin{theorem}
+假设$f : X \to Y$对于$x \in X$的某个开邻域是平展的.则分别存在$x,f(x)$的仿射开邻域$U,V$,使得$f(U) \subset V$且$f : U \to V$在例\ref{Ex:StandardEtaleMorphism}意义下标准的.
+\end{theorem}
+\begin{proof}
+    见\href{https://stacks.math.columbia.edu/tag/02GU}{Stacks Projects}的(9).
+\end{proof}
+\section{代数-几何对偶}
+正如开头所言,我们先从一些简单的交换代数讲起,然后把它们推广到概形之间的态射上.说明代数到几何上有一种对应.\\
+但是我们反过来观察平展同态,光滑同态这些代数上的映射,不难发现平展同态模拟拓扑上的局部同胚,光滑同态模拟微分流形中的浸没.说明几何到代数也有一种对应.\\
+事实上,我们可以总结出一种观点:代数-几何对偶(Isbell对偶).这种对偶往往由一对伴随函子
+\begin{equation*}
+    (\OO\dashv \Spec) :\{\text{几何对象}\} \rightleftarrows \{\text{代数对象}\},
+\end{equation*}
+给出,其中
+\begin{itemize}
+    \item $\OO$把空间映射到它的函数环,给出几何对象到代数对象的对应.
+    \item $\Spec$把代数对象映到它的谱,给出代数对象到几何对象的对应.
+\end{itemize}
